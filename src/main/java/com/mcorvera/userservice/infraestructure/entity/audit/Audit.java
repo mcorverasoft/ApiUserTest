@@ -18,9 +18,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Data
 public abstract class Audit{
     @CreatedDate
-    @Column(name="created")
+    @Column(name="created",nullable = false)
     private Instant created;
     @LastModifiedDate
-    @Column(name="modified")
+    @Column(name="modified",nullable = false)
     private Instant modified;
 }

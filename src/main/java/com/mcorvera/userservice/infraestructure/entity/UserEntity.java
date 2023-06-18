@@ -16,8 +16,8 @@ import java.util.*;
 
 
 @Table(name="users",uniqueConstraints= {
-        @UniqueConstraint(columnNames={"email"},name = "email_unique"),
-        @UniqueConstraint(columnNames={"username"}, name = "username_unique")})
+        @UniqueConstraint(columnNames={"email"},name = "UK_email"),
+        @UniqueConstraint(columnNames={"username"}, name = "UK_username")})
 @Entity
 @Data
 @NoArgsConstructor
@@ -40,7 +40,9 @@ public class UserEntity extends Audit {
     @NotBlank(message = "Password must not empty")
     @Column(nullable = false, length = 100)
     private String password;
+    @Column(nullable = false)
     private Instant last_login;
+    @Column(nullable = false)
     private Boolean isActive;
     @Column(length = 255)
     private String token;
