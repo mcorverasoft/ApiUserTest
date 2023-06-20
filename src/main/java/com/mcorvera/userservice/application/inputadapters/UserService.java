@@ -2,7 +2,7 @@ package com.mcorvera.userservice.application.inputadapters;
 
 import com.mcorvera.userservice.application.dtos.UserDTO;
 import com.mcorvera.userservice.application.dtos.UserResponse;
-import com.mcorvera.userservice.application.inputport.UserServicePort;
+import com.mcorvera.userservice.domain.inputport.UserServicePort;
 import com.mcorvera.userservice.domain.model.User;
 import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.DuplicateResourceException;
 import com.mcorvera.userservice.infraestructure.outputadapter.UserRepositoryH2;
@@ -31,7 +31,7 @@ public class UserService implements UserServicePort {
     }
 
     @Override
-    public UserResponse createUser(User user) {
+    public User createUser(User user) {
         //Business Rules
         if(userRepository.existsByEmail(user.getEmail()))
             throw new DuplicateResourceException("email: "+user.getEmail()+" is already registered");
@@ -43,11 +43,11 @@ public class UserService implements UserServicePort {
         user.setUsername(username);
         user.setPassword(bCryptPassEncoder.encode(user.getPassword()));
         user.setToken(jwtToken.generateJwt(user.getUsername()));
-        return modelMapper.map(userRepository.save(user),UserResponse.class);
+        return userRepository.save(user);
     }
 
     @Override
-    public Iterable<UserDTO> getAll() {
-        return modelMapper.map(userRepository.getAll(), new TypeToken<List<UserDTO>>() {}.getType());
+    public Iterable<User> getAll() {
+      return userRepository.getAll();
     }
 }
