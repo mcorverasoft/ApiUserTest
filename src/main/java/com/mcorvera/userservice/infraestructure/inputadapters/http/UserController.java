@@ -1,11 +1,11 @@
 package com.mcorvera.userservice.infraestructure.inputadapters.http;
 
 import com.google.common.collect.Iterables;
-import com.mcorvera.userservice.application.dtos.UserDTO;
-import com.mcorvera.userservice.application.dtos.UserResponse;
-import com.mcorvera.userservice.application.inputadapters.UserService;
+import com.mcorvera.userservice.infraestructure.dtos.UserDTO;
+import com.mcorvera.userservice.infraestructure.dtos.UserResponse;
+import com.mcorvera.userservice.application.services.UserService;
 import com.mcorvera.userservice.domain.model.User;
-import com.mcorvera.userservice.infraestructure.dtos.BaseResponse;
+import com.mcorvera.userservice.infraestructure.dtos.api.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;

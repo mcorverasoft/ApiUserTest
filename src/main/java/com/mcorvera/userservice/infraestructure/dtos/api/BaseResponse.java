@@ -1,4 +1,4 @@
-package com.mcorvera.userservice.infraestructure.dtos;
+package com.mcorvera.userservice.infraestructure.dtos.api;
 
 import lombok.Builder;
 import lombok.Data;

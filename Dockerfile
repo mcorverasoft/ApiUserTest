@@ -1,6 +1,6 @@
 #MVN container
 FROM maven:3.8.6-jdk-11-slim as builder
-COPY ../ /app
+COPY . /app/
 WORKDIR /app
 RUN mvn clean package install -DskipTests
 #Java container

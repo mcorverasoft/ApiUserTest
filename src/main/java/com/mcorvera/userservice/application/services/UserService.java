@@ -1,18 +1,14 @@
-package com.mcorvera.userservice.application.inputadapters;
+package com.mcorvera.userservice.application.services;
 
-import com.mcorvera.userservice.application.dtos.UserDTO;
-import com.mcorvera.userservice.application.dtos.UserResponse;
-import com.mcorvera.userservice.domain.inputport.UserServicePort;
+import com.mcorvera.userservice.application.inputports.UserServicePort;
 import com.mcorvera.userservice.domain.model.User;
 import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.DuplicateResourceException;
 import com.mcorvera.userservice.infraestructure.outputadapter.UserRepositoryH2;
 import com.mcorvera.userservice.infraestructure.utils.JwtToken;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Random;
 
 @Service

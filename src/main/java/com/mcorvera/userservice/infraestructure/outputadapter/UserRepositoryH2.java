@@ -1,7 +1,7 @@
 package com.mcorvera.userservice.infraestructure.outputadapter;
 
 import com.mcorvera.userservice.domain.model.User;
-import com.mcorvera.userservice.domain.outputport.UserRepository;
+import com.mcorvera.userservice.application.outputports.UserRepository;
 import com.mcorvera.userservice.infraestructure.entity.UserEntity;
 import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;

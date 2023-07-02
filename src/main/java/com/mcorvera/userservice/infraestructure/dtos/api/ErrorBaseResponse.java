@@ -1,4 +1,4 @@
-package com.mcorvera.userservice.infraestructure.dtos;
+package com.mcorvera.userservice.infraestructure.dtos.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
