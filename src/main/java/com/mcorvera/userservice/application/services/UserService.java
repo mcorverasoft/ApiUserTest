@@ -5,6 +5,7 @@ import com.mcorvera.userservice.domain.model.User;
 import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.DuplicateResourceException;
 import com.mcorvera.userservice.infraestructure.outputadapter.UserRepositoryH2;
 import com.mcorvera.userservice.infraestructure.utils.JwtToken;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
+@AllArgsConstructor
 public class UserService implements UserServicePort {
     private final BCryptPasswordEncoder bCryptPassEncoder = new BCryptPasswordEncoder();
 
@@ -19,12 +21,6 @@ public class UserService implements UserServicePort {
 
     private final JwtToken jwtToken;
     private final UserRepositoryH2 userRepository;
-
-    public UserService(ModelMapper modelMapper, JwtToken jwtToken, UserRepositoryH2 userRepository) {
-        this.modelMapper = modelMapper;
-        this.jwtToken = jwtToken;
-        this.userRepository = userRepository;
-    }
 
     @Override
     public User createUser(User user) {

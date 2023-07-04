@@ -6,6 +6,7 @@ import com.mcorvera.userservice.infraestructure.dtos.UserResponse;
 import com.mcorvera.userservice.application.services.UserService;
 import com.mcorvera.userservice.domain.model.User;
 import com.mcorvera.userservice.infraestructure.dtos.api.BaseResponse;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -19,16 +20,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/user")
 @Slf4j
+@AllArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
-
-    public UserController(UserService userService, ModelMapper modelMapper) {
-        this.userService = userService;
-        this.modelMapper = modelMapper;
-    }
-
 
     @PostMapping
     public ResponseEntity<BaseResponse> registerUser(@RequestBody @Valid User user){
