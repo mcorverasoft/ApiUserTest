@@ -1,14 +1,11 @@
 package com.mcorvera.userservice.infraestructure.outputadapter;
 
 import com.mcorvera.userservice.domain.model.User;
-import com.mcorvera.userservice.domain.outputport.UserRepository;
+import com.mcorvera.userservice.application.outputports.UserRepository;
 import com.mcorvera.userservice.infraestructure.entity.UserEntity;
-import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.DuplicateResourceException;
 import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.ResourceNotFoundException;
-import com.mcorvera.userservice.infraestructure.utils.JwtToken;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,11 +15,12 @@ import java.util.Optional;
 @Repository
 public class UserRepositoryH2 implements UserRepository {
     private final UserJpaRepository userJpaRepository;
-    @Autowired
-    private ModelMapper modelMapper;
 
-    public UserRepositoryH2(UserJpaRepository userJpaRepository) {
+    private final ModelMapper modelMapper;
+
+    public UserRepositoryH2(UserJpaRepository userJpaRepository, ModelMapper modelMapper) {
         this.userJpaRepository = userJpaRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override

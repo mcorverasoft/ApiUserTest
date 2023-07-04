@@ -1,24 +1,18 @@
 package com.mcorvera.userservice;
 
-import com.mcorvera.userservice.application.dtos.UserResponse;
-import com.mcorvera.userservice.application.inputadapters.UserService;
+import com.mcorvera.userservice.infraestructure.dtos.UserResponse;
+import com.mcorvera.userservice.application.services.UserService;
 import com.mcorvera.userservice.domain.model.User;
-import com.mcorvera.userservice.infraestructure.dtos.BaseResponse;
+import com.mcorvera.userservice.infraestructure.dtos.api.BaseResponse;
 import com.mcorvera.userservice.infraestructure.inputadapters.http.UserController;
-import com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions.ExceptionHandlerClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-
-import javax.validation.ConstraintViolationException;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -49,13 +43,13 @@ class UserserviceApplicationTests {
 
 		//Mock the service UserService
 		UserService userService = Mockito.mock(UserService.class);
-		UserResponse expectedUserResponse = new UserResponse();
+		User expectedUserResponse = new User();
 		expectedUserResponse.setId("123");
 		expectedUserResponse.setUsername("johndoe");
 		Mockito.when(userService.createUser(validUser)).thenReturn(expectedUserResponse);
-
+		ModelMapper modelMapper=new ModelMapper();
 		// Set up an instance of Controller
-		UserController userController = new UserController(userService);
+		UserController userController = new UserController(userService,modelMapper);
 
 		ResponseEntity<BaseResponse> response = userController.registerUser(validUser);
 
