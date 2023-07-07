@@ -27,7 +27,7 @@ public class User {
             message = "password must be min 4 and max 12 length containing at least 1 uppercase, 1 lowercase, 1 special character and 1 digit")
     private String password;
     private String token;
-    private Instant created;
+    private Instant created;    
     private Instant modified;
     private Instant last_login;
     private Boolean isActive;
