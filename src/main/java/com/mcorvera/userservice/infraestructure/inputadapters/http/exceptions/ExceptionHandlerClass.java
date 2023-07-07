@@ -1,11 +1,10 @@
 package com.mcorvera.userservice.infraestructure.inputadapters.http.exceptions;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mcorvera.userservice.infraestructure.dtos.BaseResponse;
-import com.mcorvera.userservice.infraestructure.dtos.ErrorBaseResponse;
-import com.mcorvera.userservice.infraestructure.dtos.TypeError;
+import com.mcorvera.userservice.infraestructure.dtos.api.BaseResponse;
+import com.mcorvera.userservice.infraestructure.dtos.api.ErrorBaseResponse;
+import com.mcorvera.userservice.infraestructure.dtos.api.TypeError;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

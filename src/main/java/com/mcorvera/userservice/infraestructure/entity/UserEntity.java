@@ -52,7 +52,6 @@ public class UserEntity extends Audit {
 
     @PrePersist
     public void prePersist(){
-        this.password= bCryptPassEncoder.encode(this.password);
         this.last_login=Instant.now();
         this.isActive=true;
     }
