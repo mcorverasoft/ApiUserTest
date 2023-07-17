@@ -16,7 +16,8 @@ import java.util.Date;
 public class JwtToken implements Serializable {
     @Value("${jwt.secret}")
     private String SECRET_KEY;
-    private final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+    @Value("${jwt.expiration}")
+    private Long JWT_TOKEN_VALIDITY;
     public String generateJwt(String subject) {
         //Milliseconds
         long currentTimeMillis = System.currentTimeMillis();

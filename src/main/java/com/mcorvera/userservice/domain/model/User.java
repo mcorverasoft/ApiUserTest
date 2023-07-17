@@ -1,5 +1,6 @@
 package com.mcorvera.userservice.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +18,7 @@ public class User {
     @NotBlank(message = "name must not empty")
     private String name;
     @NotBlank(message = "email must not empty")
-    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$",
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$",
             message = "email is not valid")
     private String email;
     @NotBlank(message = "password must not empty")
@@ -25,7 +26,7 @@ public class User {
             message = "password must be min 4 and max 12 length containing at least 1 uppercase, 1 lowercase, 1 special character and 1 digit")
     private String password;
     private String token;
-    private Instant created;    
+    private Instant created;
     private Instant modified;
     private Instant last_login;
     private Boolean isActive;

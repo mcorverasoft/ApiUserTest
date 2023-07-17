@@ -31,6 +31,10 @@ public class GeneralConfigs {
         return new EntityAuditorAware();
     }
 
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
 
 class EntityAuditorAware  implements AuditorAware<String> {
