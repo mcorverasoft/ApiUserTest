@@ -3,6 +3,7 @@ package com.mcorvera.userservice.infraestructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -31,4 +32,5 @@ public class SwaggerConfig {
                 new Contact("Milton Corvera", "https://www.linkedin.com/in/milton-corvera/", "milton.corvera.ing@gmail.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
+
 }

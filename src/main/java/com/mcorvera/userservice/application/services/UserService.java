@@ -41,7 +41,7 @@ public class UserService implements UserServicePort {
         user.setToken(jwtToken.generateJwt(user.getUsername()));
         User createdUser=userRepository.save(user);
         if(createdUser!=null){
-            EventBase eventUser= (EventBase)EventUser.builder()
+            EventBase<User> eventUser= (EventBase)EventUser.builder()
                     .id(UUID.randomUUID())
                     .date(Instant.now())
                     .type(EvenType.CREATED)
