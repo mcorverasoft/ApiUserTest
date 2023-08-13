@@ -6,10 +6,15 @@ import com.mcorvera.userservice.infraestructure.dtos.UserResponse;
 import com.mcorvera.userservice.application.services.UserService;
 import com.mcorvera.userservice.domain.model.User;
 import com.mcorvera.userservice.infraestructure.dtos.api.BaseResponse;
+import com.netflix.discovery.converters.Auto;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +25,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/user-service")
 @Slf4j
-@AllArgsConstructor
+@RefreshScope
 public class UserController {
 
-    private final UserService userService;
-    private final ModelMapper modelMapper;
+    @Autowired
+    private  UserService userService;
+    @Autowired
+    private  ModelMapper modelMapper;
+    @Value("${app.testProp}")
+    private String testProp;
+
+    @GetMapping("/test-prop")
+    public String getTestProp() {
+        return testProp;
+    }
 
     @PostMapping
     public ResponseEntity<BaseResponse> registerUser(@RequestBody @Valid User user){
