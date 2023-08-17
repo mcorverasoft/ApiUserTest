@@ -35,6 +35,11 @@ public class UserController {
     @Value("${app.testProp}")
     private String testProp;
 
+    public UserController(UserService userService, ModelMapper modelMapper) {
+        this.userService=userService;
+        this.modelMapper=modelMapper;
+    }
+
     @GetMapping("/test-prop")
     public String getTestProp() {
         return testProp;
