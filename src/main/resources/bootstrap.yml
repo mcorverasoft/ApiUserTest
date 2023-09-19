@@ -12,3 +12,7 @@ spring:
             scheme: http
             authentication: TOKEN
             token: 00000000-0000-0000-0000-000000000000
+server:
+    port: 0
+    servlet:
+        context-path: /user-service

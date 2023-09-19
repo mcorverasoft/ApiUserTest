@@ -15,6 +15,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/users")
 @Slf4j
 @RefreshScope
 public class UserController {
@@ -45,12 +46,12 @@ public class UserController {
         return testProp;
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<BaseResponse> registerUser(@RequestBody @Valid User user){
         UserResponse userResponse = this.modelMapper.map(userService.createUser(user), UserResponse.class);
         return ResponseEntity.ok(BaseResponse.builder().data(userResponse).build());
     }
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> getAllUser(){
         Iterable<UserDTO> listUser=
          modelMapper.map(userService.getAll(), new TypeToken<List<UserDTO>>() {}.getType());
