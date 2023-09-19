@@ -28,8 +28,15 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests(authz->authz
-                        .antMatchers("/**/actuator").permitAll()
+                        .antMatchers("/**/actuator/**").permitAll()
                         .antMatchers("/**/test-prop").permitAll()
+                        .antMatchers("/**/v2/api-docs",
+                                "/v2/api-docs",
+                                "/configuration/ui",
+                                "/swagger-resources/**",
+                                "/configuration/security",
+                                "/swagger-ui.html",
+                                "/webjars/**").permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer().jwt();
         httpSecurity
